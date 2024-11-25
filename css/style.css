@@ -83,7 +83,7 @@ nav button {
     transition: all 0.3s ease;
 }
 
-nav button:hover {
+nav button:hover, .hero .left-section .top .buttons button.doc:hover  {
     color: #000;
     background-color: #fff;
     border-color: #dedede;
@@ -91,4 +91,89 @@ nav button:hover {
 
 nav button i {
     font-size: 20px;
+}
+
+.hero {
+    margin-top: 80px;
+    height: calc(100vh - 80px);
+    padding: 0 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.hero > img {
+    max-width: 520px;
+    width: 44%;
+    border-radius: 26px;
+}
+
+.hero .left-section {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+}
+
+.hero .left-section .top h2 {
+    font-size: 44px;
+    margin-bottom: 24px;
+}
+
+.hero .left-section .top p {
+    color: #606060;
+    font-size: 18px;
+    margin-bottom: 24px;
+    text-align: justify;
+}
+
+.hero .left-section .top .buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.hero .left-section .top .buttons button {
+    font-size: 16px;
+    border: none;
+    padding: 5px 20px;
+    background: #fff;
+    border: 1px solid #dedede;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.hero .left-section .top .buttons button i {
+    font-size: 26px;
+}
+
+.hero .left-section .top .buttons button.doc {
+    background: #000;
+    color: #fff;
+}
+
+.hero .left-section .top .buttons button.git:hover {
+    background: #000;
+    color: #fff;
+    border-color: transparent;
+}
+
+.hero .left-section .bottom p {
+    font-size: 14px;
+    color: #606060;
+    margin-bottom: 10px;
+}
+
+.hero .left-section .bottom .icons {
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    width: fit-content;
 }
