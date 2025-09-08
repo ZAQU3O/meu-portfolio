@@ -249,6 +249,16 @@ nav button i {
     
 }
 
+.about .item {
+    transition: transform 0.3s cubic-bezier(.4,2,.6,1), box-shadow 0.3s;
+}
+
+.about .item:hover {
+    transform: translateY(-16px) scale(1.04);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+    z-index: 2;
+}
+
 .projects {
     padding: 0 24px;
     background: #f5f5f5;
@@ -503,6 +513,8 @@ footer a:hover {
     }
 
     .about .items .item {
+        margin-top: 30px;
+        margin-bottom: 60px;
         width: 100%;
         max-height: 250px;
     }
