@@ -72,6 +72,34 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Controle do menu mobile - garantir que não interfira no desktop */
+body:not(.menu-open) .nav-overlay {
+    display: none;
+}
+
+@media screen and (min-width: 769px) {
+    .mobile-menu-btn {
+        display: none !important;
+    }
+    
+    .nav-overlay {
+        display: none !important;
+    }
+    
+    .nav-links {
+        position: static !important;
+        background: transparent !important;
+        height: auto !important;
+        width: auto !important;
+        flex-direction: row !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        right: auto !important;
+    }
+}
+
 nav {
     display: flex;
     align-items: center;
@@ -105,6 +133,15 @@ nav .logo a {
 nav .nav-links {
     display: flex;
     gap: 24px;
+    position: static;
+    background: transparent;
+    height: auto;
+    width: auto;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0;
+    box-shadow: none;
 }
 
 nav .nav-links a {
@@ -118,7 +155,7 @@ nav .nav-links a.active {
     color: #000;
 }
 
-nav button {
+nav .nav-github-btn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -133,13 +170,13 @@ nav button {
     transition: all 0.3s ease;
 }
 
-nav button:hover, .hero .left-section .top .buttons button.doc:hover, .contact .items .item button:hover {
+nav .nav-github-btn:hover, .hero .left-section .top .buttons button.doc:hover, .contact .items .item button:hover {
     color: #000;
     background-color: #fff;
     border-color: #dedede;
 }
 
-nav button i {
+nav .nav-github-btn i {
     font-size: 20px;
 }
 
@@ -675,75 +712,119 @@ footer a:hover {
     .contact .items .item button {
         width: 100%;
     }
+
+    /* Manter menu normal em tablets até chegar aos 768px */
+    .mobile-menu-btn {
+        display: none !important;
+    }
+    
+    .nav-overlay {
+        display: none !important;
+    }
+    
+    .nav-links {
+        position: static !important;
+        background: transparent !important;
+        height: auto !important;
+        width: auto !important;
+        flex-direction: row !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        right: auto !important;
+        gap: 24px !important;
+    }
 }
 
+/* Overlay de fundo - oculto por padrão */
+.nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.6);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 9998;
+    pointer-events: none;
+    backdrop-filter: blur(5px);
+}
+
+.nav-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+}
+
+/* Mobile First - Para dispositivos pequenos (até 768px) */
 @media screen and (max-width: 768px) {
 
-    nav, nav .nav-links{
+    nav {
         gap: 16px;
     }
 
-    nav button {
+    nav .nav-github-btn {
         display: none;
     }
 
     .mobile-menu-btn {
+        display: block !important;
+    }
+
+    .nav-overlay {
         display: block;
     }
 
     .nav-links {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        height: 100vh;
-        width: 280px;
-        max-width: 80vw;
-        background: #fff;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: -5px 0 25px rgba(0,0,0,0.15);
-        z-index: 9999;
-        padding: 20px;
+        position: fixed !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) scale(0) !important;
+        height: auto !important;
+        width: 300px !important;
+        max-width: 90vw !important;
+        background: #fff !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.2) !important;
+        border-radius: 16px !important;
+        z-index: 9999 !important;
+        padding: 30px 20px !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        gap: 0 !important;
     }
 
     .nav-links.active {
-        right: 0;
-    }
-
-    /* Overlay para o menu mobile */
-    .nav-links::before {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: -100vw;
-        width: 100vw;
-        height: 100vh;
-        background: rgba(0,0,0,0.5);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        pointer-events: none;
-    }
-
-    .nav-links.active::before {
-        opacity: 1;
-        pointer-events: all;
+        transform: translate(-50%, -50%) scale(1) !important;
+        opacity: 1 !important;
+        visibility: visible !important;
     }
 
     .nav-links a {
         font-size: 18px;
-        margin: 15px 0;
-        padding: 10px 20px;
-        border-radius: 8px;
+        font-weight: 500;
+        margin: 8px 0;
+        padding: 12px 30px;
+        border-radius: 12px;
         transition: all 0.3s ease;
         width: 100%;
         text-align: center;
+        color: #333;
+        display: block;
     }
 
-    .nav-links a:hover {
-        background: #f5f5f5;
+    .nav-links a:hover,
+    .nav-links a.active {
+        background: #f8f9fa;
         color: #000;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
     body.menu-open {
@@ -851,5 +932,25 @@ footer a:hover {
 
     footer a, footer p {
         font-size: 11px;
+    }
+}
+
+/* Extra Small Devices - iPhone XR, iPhone 12, etc. (até 414px) */
+@media screen and (max-width: 414px) {
+    .nav-links {
+        width: 280px !important;
+        max-width: 85vw !important;
+        padding: 25px 15px !important;
+    }
+    
+    .nav-links a {
+        font-size: 16px !important;
+        padding: 10px 20px !important;
+        margin: 6px 0 !important;
+    }
+    
+    .mobile-menu-btn {
+        padding: 6px !important;
+        font-size: 22px !important;
     }
 }

@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Zaqueu - Desenvolvedor Full-Stack | Portfolio</title>
     <meta name="description" content="Portfólio de Zaqueu, desenvolvedor full-stack especializado em React, Node.js e tecnologias modernas. Veja meus projetos e entre em contato.">
     <meta name="keywords" content="desenvolvedor, full-stack, react, nodejs, javascript, portfolio, web developer">
@@ -38,8 +38,14 @@
             <a href="#projects">Portfólio</a>
             <a href="#contact">Contato</a>
         </div>
-        <button><i class="ri-github-fill"></i>Meus Projetos</button>
+        <button class="nav-github-btn"><i class="ri-github-fill"></i>Meus Projetos</button>
+        <button class="mobile-menu-btn" aria-label="Abrir Menu">
+            <i class="ri-menu-line"></i>
+        </button>
     </nav>
+    
+    <!-- Overlay para menu mobile -->
+    <div class="nav-overlay"></div>
 
     <section id="home" class="hero">
         <div class="left-section">
@@ -213,5 +219,7 @@
     </footer>
 
     <script src="js/script.js"></script>
+    <!-- Debug temporário para iPhone XR -->
+    <script src="debug-mobile.js"></script>
 </body>
 </html>

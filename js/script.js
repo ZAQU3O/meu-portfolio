@@ -1,70 +1,125 @@
-// Menu Mobile Toggle
-let mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-const navLinks = document.querySelector('.nav-links');
-const body = document.body;
+// Variáveis globais para o menu
+let mobileMenuBtn;
+let navLinks;
+let navOverlay;
+let isMenuOpen = false;
 
-// Criar botão do menu mobile se não existir
-if (!mobileMenuBtn) {
-    const menuBtn = document.createElement('button');
-    menuBtn.className = 'mobile-menu-btn';
-    menuBtn.innerHTML = '<i class="ri-menu-line"></i>';
-    menuBtn.setAttribute('aria-label', 'Menu Mobile');
-    document.querySelector('nav').appendChild(menuBtn);
-    mobileMenuBtn = menuBtn;
-}
-
-// Função para fechar menu
-function closeMenu() {
-    navLinks.classList.remove('active');
-    const icon = mobileMenuBtn.querySelector('i');
-    if (icon) {
-        icon.className = 'ri-menu-line';
+// Inicializar menu mobile quando o DOM estiver carregado
+function initMobileMenu() {
+    navLinks = document.querySelector('.nav-links');
+    navOverlay = document.querySelector('.nav-overlay');
+    mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    
+    if (!navLinks || !navOverlay || !mobileMenuBtn) {
+        console.error('Elementos de navegação não encontrados');
+        return;
     }
-    body.classList.remove('menu-open');
+    
+    // Garantir estado inicial correto
+    isMenuOpen = false;
+    navLinks.classList.remove('active');
+    navOverlay.classList.remove('active');
+    document.body.classList.remove('menu-open');
+    
+    // Event listeners
+    setupMenuEventListeners();
 }
 
-// Função para abrir menu
+// Configurar event listeners
+function setupMenuEventListeners() {
+    if (!mobileMenuBtn || !navLinks || !navOverlay) return;
+    
+    // Click no botão do menu
+    mobileMenuBtn.addEventListener('click', toggleMenu);
+    
+    // Click nos links do menu
+    const menuLinks = navLinks.querySelectorAll('a');
+    for (const link of menuLinks) {
+        link.addEventListener('click', (e) => {
+            // Só fechar menu se estivermos em mobile
+            if (window.innerWidth <= 768) {
+                closeMenu();
+            }
+        });
+    }
+    
+    // Click no overlay
+    navOverlay.addEventListener('click', closeMenu);
+    
+    // Tecla ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && isMenuOpen) {
+            closeMenu();
+        }
+    });
+    
+    // Redimensionamento da janela
+    window.addEventListener('resize', () => {
+        const width = window.innerWidth;
+        console.log('Largura atual:', width);
+        
+        // Fechar menu se mudou para desktop
+        if (width > 768 && isMenuOpen) {
+            console.log('Fechando menu - mudou para desktop');
+            closeMenu();
+        }
+        
+        // Debug para iPhone XR
+        if (width <= 414) {
+            console.log('Dispositivo detectado: iPhone XR ou similar');
+        }
+    });
+}
+
+// Alternar menu
+function toggleMenu(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    if (isMenuOpen) {
+        closeMenu();
+    } else {
+        openMenu();
+    }
+}
+
+// Abrir menu
 function openMenu() {
+    if (!navLinks || !mobileMenuBtn || !navOverlay) return;
+    
     navLinks.classList.add('active');
+    navOverlay.classList.add('active');
+    document.body.classList.add('menu-open');
+    
     const icon = mobileMenuBtn.querySelector('i');
     if (icon) {
         icon.className = 'ri-close-line';
     }
-    body.classList.add('menu-open');
+    
+    mobileMenuBtn.setAttribute('aria-label', 'Fechar Menu');
+    mobileMenuBtn.setAttribute('aria-expanded', 'true');
+    
+    isMenuOpen = true;
 }
 
-// Toggle menu mobile
-document.addEventListener('click', (e) => {
-    if (e.target.closest('.mobile-menu-btn')) {
-        e.preventDefault();
-        e.stopPropagation();
-        
-        if (navLinks.classList.contains('active')) {
-            closeMenu();
-        } else {
-            openMenu();
-        }
+// Fechar menu
+function closeMenu() {
+    if (!navLinks || !mobileMenuBtn || !navOverlay) return;
+    
+    navLinks.classList.remove('active');
+    navOverlay.classList.remove('active');
+    document.body.classList.remove('menu-open');
+    
+    const icon = mobileMenuBtn.querySelector('i');
+    if (icon) {
+        icon.className = 'ri-menu-line';
     }
     
-    // Fechar menu ao clicar no overlay
-    if (e.target === navLinks && navLinks.classList.contains('active')) {
-        closeMenu();
-    }
-});
-
-// Fechar menu ao clicar em um link
-navLinks.addEventListener('click', (e) => {
-    if (e.target.tagName === 'A') {
-        closeMenu();
-    }
-});
-
-// Fechar menu com ESC
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && navLinks.classList.contains('active')) {
-        closeMenu();
-    }
-});
+    mobileMenuBtn.setAttribute('aria-label', 'Abrir Menu');
+    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+    
+    isMenuOpen = false;
+}
 
 // Navegação suave
 function smoothScroll(target) {
@@ -129,8 +184,13 @@ const observer = new IntersectionObserver((entries) => {
 
 // Observar elementos para animação
 document.addEventListener('DOMContentLoaded', () => {
+    // Inicializar menu mobile
+    initMobileMenu();
+    
     const elementsToAnimate = document.querySelectorAll('.about .item, .projects .item, .hero .left-section, .hero img');
-    elementsToAnimate.forEach(el => observer.observe(el));
+    for (const el of elementsToAnimate) {
+        observer.observe(el);
+    }
     
     // Lazy loading das imagens
     const images = document.querySelectorAll('img[data-src]');
@@ -207,7 +267,7 @@ document.querySelector('.hero .buttons .git').addEventListener('click', () => {
     window.open('https://github.com/ZAQU3O', '_blank'); // Substitua pelo seu GitHub
 });
 
-document.querySelector('nav button').addEventListener('click', () => {
+document.querySelector('nav .nav-github-btn').addEventListener('click', () => {
     window.open('https://github.com/ZAQU3O', '_blank'); // Substitua pelo seu GitHub
 });
 
