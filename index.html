@@ -3,141 +3,215 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Portfolio - Zaqu3o's</title>
+    <title>Zaqueu - Desenvolvedor Full-Stack | Portfolio</title>
+    <meta name="description" content="Portfólio de Zaqueu, desenvolvedor full-stack especializado em React, Node.js e tecnologias modernas. Veja meus projetos e entre em contato.">
+    <meta name="keywords" content="desenvolvedor, full-stack, react, nodejs, javascript, portfolio, web developer">
+    <meta name="author" content="Zaqueu">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://seu-dominio.com/">
+    <meta property="og:title" content="Zaqueu - Desenvolvedor Full-Stack">
+    <meta property="og:description" content="Desenvolvedor full-stack especializado em criar soluções web modernas e eficientes.">
+    <meta property="og:image" content="https://seu-dominio.com/imgs/TCA_9222.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://seu-dominio.com/">
+    <meta property="twitter:title" content="Zaqueu - Desenvolvedor Full-Stack">
+    <meta property="twitter:description" content="Desenvolvedor full-stack especializado em criar soluções web modernas e eficientes.">
+    <meta property="twitter:image" content="https://seu-dominio.com/imgs/TCA_9222.jpg">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.5.0/remixicon.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <nav>
         <div class="logo">
-            <img src="imgs/zaqueo logo.png" alt="logo">
-            <a href="#">QO</a>
+            <img src="imgs/zaqueo logo.png" alt="Logo Zaqueu">
+            <a href="#home">ZQ</a>
         </div>
         <div class="nav-links">
-            <a href="#">Home</a>
-            <a href="#">Sobre Mim</a>
-            <a href="#">Serviços</a>
-            <a href="#">Portfólio</a>
-            <a href="#">Contato</a>
+            <a href="#home">Home</a>
+            <a href="#about">Sobre Mim</a>
+            <a href="#services">Serviços</a>
+            <a href="#projects">Portfólio</a>
+            <a href="#contact">Contato</a>
         </div>
-        <button><i class="ri-github-fill"></i>My Projects</button>
+        <button><i class="ri-github-fill"></i>Meus Projetos</button>
     </nav>
 
-    <div class="hero">
+    <section id="home" class="hero">
         <div class="left-section">
             <div class="top">
-                <h2>Creative Fullstack Web Developer</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, quaerat voluptatibus asperiores ipsam ea distinctio, esse sapiente pariatur deleniti, suscipit minima voluptatum velit labore excepturi impedit deserunt quam eum culpa.</p>
+                <h1>Desenvolvedor Full-Stack Criativo</h1>
+                <p>Olá! Sou Zaqueu, desenvolvedor apaixonado por criar experiências digitais incríveis. Especializado em tecnologias modernas como React, Node.js e bancos de dados, transformo ideias em soluções web funcionais e elegantes.</p>
 
                 <div class="buttons">
-                    <button class="doc">Hire Me Now <i class="ri-arrow-right-line"></i></button>
+                    <button class="doc">Contratar Agora <i class="ri-arrow-right-line"></i></button>
                     <button class="git">
-                        <i class="ri-github-fill"></i> My Github
+                        <i class="ri-github-fill"></i> Meu GitHub
                     </button>
                 </div>
             </div>
 
             <div class="bottom">
-                <p>Other Socials:</p>
+                <p>Outras Redes Sociais:</p>
                 <div class="icons">
-                    <i class="ri-whatsapp-fill"></i>
-                    <i class="ri-instagram-fill"></i>
-                    <i class="ri-discord-fill"></i>
+                    <i class="ri-whatsapp-fill" title="WhatsApp"></i>
+                    <i class="ri-instagram-fill" title="Instagram"></i>
+                    <i class="ri-discord-fill" title="Discord"></i>
                 </div>
             </div>
         </div>
-        <img src="imgs/TCA_9222.jpg" alt="Zaqueu">
-    </div>
+        <img src="imgs/TCA_9222.jpg" alt="Foto de Zaqueu, desenvolvedor full-stack">
+    </section>
 
-    <div class="about">
-        <p>Sobre Web Development</p>
-        <h2>I create user-friendly, and beautiful websites and aplications.</h2>
+    <section id="about" class="about">
+        <p>Sobre Desenvolvimento Web</p>
+        <h2>Eu crio websites e aplicações amigáveis e bonitas.</h2>
         <div class="items">
             <div class="item">
                 <div class="inner">
-                    <img src="imgs/site exemplo.jpeg" alt="">
-                    <a href="#">Front-End Development</a>
-                    <p>Crafing visually appealing and responsive interfaces using HTML, CSS and JavaScript frameworks like React and Vue.</p>
+                    <img src="imgs/site exemplo.jpeg" alt="Exemplo de desenvolvimento front-end">
+                    <a href="#services">Desenvolvimento Front-End</a>
+                    <p>Criando interfaces visualmente atraentes e responsivas usando HTML, CSS e frameworks JavaScript como React e Vue.</p>
                 </div>
             </div>
 
             <div class="item">
                 <div class="inner">
-                    <img src="imgs/back end.jpeg" alt="">
-                    <a href="#">Back-End Development</a>
-                    <p>Building robust and scalable sever-side applications with Node.js, Express, and databases like MongoDB and SQL.</p>
+                    <img src="imgs/back end.jpeg" alt="Exemplo de desenvolvimento back-end">
+                    <a href="#services">Desenvolvimento Back-End</a>
+                    <p>Construindo aplicações server-side robustas e escaláveis com Node.js, Express e bancos de dados como MongoDB e SQL.</p>
                 </div>
             </div>
 
             <div class="item">
                 <div class="inner">
-                    <img src="imgs/database dev.jpeg" alt="">
-                    <a href="#">Full-Stack Integration</a>
-                    <p>Seamlessly integrating front-end and back-end technologies to deliver comprehensive web solutions.</p>
+                    <img src="imgs/database dev.jpeg" alt="Integração full-stack">
+                    <a href="#services">Integração Full-Stack</a>
+                    <p>Integrando perfeitamente tecnologias front-end e back-end para entregar soluções web completas.</p>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="projects">
+    <section id="projects" class="projects">
         <div class="inner">
             <p class="debug">
-                <i class="ri-command-line"></i> Troubleshot & Debug
+                <i class="ri-command-line"></i> Desenvolvimento & Debug
             </p>
-            <h2>Projects Showcase</h2>
+            <h2>Showcase de Projetos</h2>
             <p class="info">
-                Take a look at some of my notable projects, showcasing my ability to design and develop effective web solutions. 
+                Dê uma olhada em alguns dos meus projetos notáveis, mostrando minha habilidade de projetar e desenvolver soluções web eficazes.
             </p>
-            <button>Explore my prjects <i class="ri-arrow-right-line"></i></button>
+            <button>Explorar meus projetos <i class="ri-arrow-right-line"></i></button>
 
             <div class="items">
                 <div class="item">
                     <i class="ri-shopping-bag-4-line"></i>
-                    <a href="#">E-commerce</a>
-                    <p>Developed full-featured e-commerce plataform with secure payments.</p>
+                    <a href="#" target="_blank">E-commerce Completo</a>
+                    <p>Plataforma de e-commerce completa com pagamentos seguros, carrinho de compras e painel administrativo.</p>
                 </div>
 
                 <div class="item">
                     <i class="ri-id-card-line"></i>
-                    <a href="#">Portfolio Website</a>
-                    <p>Developed full-featured e-commerce plataform with secure payments.</p>
+                    <a href="#" target="_blank">Website Portfolio</a>
+                    <p>Portfolio responsivo e moderno desenvolvido com as mais recentes tecnologias web e boas práticas de UX.</p>
                 </div>
 
                 <div class="item">
                     <i class="ri-apps-line"></i>
-                    <a href="#">Social Media App</a>
-                    <p>Developed full-featured e-commerce plataform with secure payments.</p>
+                    <a href="#" target="_blank">App de Rede Social</a>
+                    <p>Aplicação de rede social completa com sistema de posts, comentários, likes e mensagens em tempo real.</p>
                 </div>
 
                 <div class="item">
                     <i class="ri-news-line"></i>
-                    <a href="#">Blog Platform</a>
-                    <p>Developed full-featured e-commerce plataform with secure payments.</p>
+                    <a href="#" target="_blank">Plataforma de Blog</a>
+                    <p>Sistema de blog moderno com painel de administração, sistema de comentários e otimização para SEO.</p>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="contact">
-        <h2>Interested in Working Together?</h2>
-        <div class="items">
-            <div class="item">
-                <a href="">Schedulle a call</a>
-                <p>Let's discuss your project ideas and how I can help you.</p>
-                <button>Schedulle a Call</button>
+    <section id="contact" class="contact">
+        <h2>Interessado em Trabalhar Juntos?</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <div class="items">
+                    <div class="item">
+                        <a href="">Agendar uma Conversa</a>
+                        <p>Vamos discutir suas ideias de projeto e como posso ajudá-lo.</p>
+                        <button type="button" onclick="smoothScroll('#contact-form')">Agendar Conversa</button>
+                    </div>
+                    <div class="item">
+                        <a href="">Explorar meu Trabalho</a>
+                        <p>Veja meu portfólio para conhecer o tipo de trabalho que faço.</p>
+                        <button type="button" onclick="smoothScroll('#projects')">Ver meu Trabalho</button>
+                    </div>
+                </div>
             </div>
-            <div class="item">
-                <a href="">Explore my work</a>
-                <p>View my portfolio to see the kind of work I do for you.</p>
-                <button>View my Work</button>
+            
+            <div id="contact-form" class="contact-form">
+                <h3>Entre em Contato</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Nome *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Assunto *</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Selecione um assunto</option>
+                            <option value="freelance">Projeto Freelance</option>
+                            <option value="job">Oportunidade de Emprego</option>
+                            <option value="consultation">Consultoria</option>
+                            <option value="collaboration">Colaboração</option>
+                            <option value="other">Outros</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="budget">Orçamento (Opcional)</label>
+                        <select id="budget" name="budget">
+                            <option value="">Selecione uma faixa</option>
+                            <option value="<5000">Menos de R$ 5.000</option>
+                            <option value="5000-10000">R$ 5.000 - R$ 10.000</option>
+                            <option value="10000-25000">R$ 10.000 - R$ 25.000</option>
+                            <option value="25000+">Mais de R$ 25.000</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Mensagem *</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Conte-me sobre seu projeto..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <span>Enviar Mensagem</span>
+                        <i class="ri-send-plane-line"></i>
+                    </button>
+                    
+                    <div id="form-status" class="form-status"></div>
+                </form>
             </div>
         </div>
-    </div>
+    </section>
 
     <footer>
-        <a href="">Terms of service</a>
-        <a href="">Privcy Policy</a>
-        <a href="">2025 Zaqueu Desenvolvedor de Software</a>
+        <a href="">Termos de Serviço</a>
+        <a href="">Política de Privacidade</a>
+        <a href="">© 2025 Zaqueu - Desenvolvedor de Software</a>
     </footer>
+
+    <script src="js/script.js"></script>
 </body>
 </html>
