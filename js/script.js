@@ -1,5 +1,5 @@
 // Menu Mobile Toggle
-const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+let mobileMenuBtn = document.querySelector('.mobile-menu-btn');
 const navLinks = document.querySelector('.nav-links');
 const body = document.body;
 
@@ -8,25 +8,61 @@ if (!mobileMenuBtn) {
     const menuBtn = document.createElement('button');
     menuBtn.className = 'mobile-menu-btn';
     menuBtn.innerHTML = '<i class="ri-menu-line"></i>';
+    menuBtn.setAttribute('aria-label', 'Menu Mobile');
     document.querySelector('nav').appendChild(menuBtn);
+    mobileMenuBtn = menuBtn;
+}
+
+// Função para fechar menu
+function closeMenu() {
+    navLinks.classList.remove('active');
+    const icon = mobileMenuBtn.querySelector('i');
+    if (icon) {
+        icon.className = 'ri-menu-line';
+    }
+    body.classList.remove('menu-open');
+}
+
+// Função para abrir menu
+function openMenu() {
+    navLinks.classList.add('active');
+    const icon = mobileMenuBtn.querySelector('i');
+    if (icon) {
+        icon.className = 'ri-close-line';
+    }
+    body.classList.add('menu-open');
 }
 
 // Toggle menu mobile
 document.addEventListener('click', (e) => {
     if (e.target.closest('.mobile-menu-btn')) {
-        navLinks.classList.toggle('active');
-        const icon = e.target.closest('.mobile-menu-btn').querySelector('i');
-        icon.className = navLinks.classList.contains('active') ? 'ri-close-line' : 'ri-menu-line';
-        body.classList.toggle('menu-open');
+        e.preventDefault();
+        e.stopPropagation();
+        
+        if (navLinks.classList.contains('active')) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
+    }
+    
+    // Fechar menu ao clicar no overlay
+    if (e.target === navLinks && navLinks.classList.contains('active')) {
+        closeMenu();
     }
 });
 
 // Fechar menu ao clicar em um link
 navLinks.addEventListener('click', (e) => {
     if (e.target.tagName === 'A') {
-        navLinks.classList.remove('active');
-        document.querySelector('.mobile-menu-btn i').className = 'ri-menu-line';
-        body.classList.remove('menu-open');
+        closeMenu();
+    }
+});
+
+// Fechar menu com ESC
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+        closeMenu();
     }
 });
 

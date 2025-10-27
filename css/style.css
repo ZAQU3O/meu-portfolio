@@ -54,6 +54,17 @@ h1 {
     cursor: pointer;
     color: #000;
     padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.mobile-menu-btn:hover {
+    background-color: #f5f5f5;
+}
+
+.mobile-menu-btn:focus {
+    outline: 2px solid #000;
+    outline-offset: 2px;
 }
 
 /* Scroll suave */
@@ -350,9 +361,12 @@ nav button i {
     border: 1px solid #484848;
     border-radius: 16px;
     padding: 32px 24px;
-    height: 250px;
+    height: 280px;
     width: 24%;
     background: #262626;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 .projects .inner .items .item i {
@@ -361,6 +375,8 @@ nav button i {
     border-radius: 10px;
     padding: 10px;
     background: #303030;
+    width: fit-content;
+    flex-shrink: 0;
 }
 
 .projects .inner .items .item a {
@@ -368,13 +384,22 @@ nav button i {
     margin: 24px 0 14px;
     color: #fff;
     font-size: 20px;
+    font-weight: 500;
+    line-height: 1.3;
+    flex-shrink: 0;
 }
 
 .projects .inner .items .item p {
     color: #a1a1a1;
-    font-size: 16px;
-    line-height: 24px;
-    
+    font-size: 14px;
+    line-height: 1.5;
+    flex: 1;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
 }
 
 .projects .item {
@@ -596,7 +621,7 @@ footer a:hover {
 
     .projects .inner .items .item {
         width: 46%;
-        height: 220px;
+        height: 250px;
     }
 
     .contact .items .item a {
@@ -644,7 +669,7 @@ footer a:hover {
     }
 
     .projects .inner .items .item {
-        height: 250px;
+        height: 280px;
     }
 
     .contact .items .item button {
@@ -671,23 +696,54 @@ footer a:hover {
         top: 0;
         right: -100%;
         height: 100vh;
-        width: 300px;
+        width: 280px;
+        max-width: 80vw;
         background: #fff;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        transition: right 0.3s ease;
-        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-        z-index: 1000;
+        transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: -5px 0 25px rgba(0,0,0,0.15);
+        z-index: 9999;
+        padding: 20px;
     }
 
     .nav-links.active {
         right: 0;
     }
 
+    /* Overlay para o menu mobile */
+    .nav-links::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: -100vw;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0,0,0,0.5);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+    }
+
+    .nav-links.active::before {
+        opacity: 1;
+        pointer-events: all;
+    }
+
     .nav-links a {
         font-size: 18px;
-        margin: 20px 0;
+        margin: 15px 0;
+        padding: 10px 20px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links a:hover {
+        background: #f5f5f5;
+        color: #000;
     }
 
     body.menu-open {
@@ -732,22 +788,26 @@ footer a:hover {
 
     .projects .inner .items .item {
         width: 100%;
-        height: 170px;
+        height: 200px;
+        padding: 24px 20px;
     }
 
     .projects .inner .items .item i {
         font-size: 28px;
+        padding: 8px;
     }
 
     .projects .inner .items .item a {
-        display: inline-block;
-        margin-left: 10px;
+        display: block;
+        margin: 16px 0 10px 0;
         font-size: 16px;
     }
 
     .projects .inner .items .item p {
-        margin-top: 10px;
-        font-size: 14px;
+        font-size: 13px;
+        line-height: 1.4;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
     }
 
     .contact {
