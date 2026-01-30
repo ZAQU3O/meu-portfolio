@@ -271,17 +271,9 @@ document.querySelector('nav .nav-github-btn').addEventListener('click', () => {
     window.open('https://github.com/ZAQU3O', '_blank'); // Substitua pelo seu GitHub
 });
 
-// Inicializar EmailJS
-const EMAILJS_PUBLIC_KEY = '-9nJq48xIc1sepwI2';
+// Configuração EmailJS
 const EMAILJS_SERVICE_ID = 'service_zfft89v';
 const EMAILJS_TEMPLATE_ID = 'template_rclgdrf';
-
-// Inicializar EmailJS quando o documento carregar
-document.addEventListener('DOMContentLoaded', () => {
-    if (typeof emailjs !== 'undefined') {
-        emailjs.init(EMAILJS_PUBLIC_KEY);
-    }
-});
 
 // Funcionalidade do formulário de contato
 document.getElementById('contactForm').addEventListener('submit', async (e) => {

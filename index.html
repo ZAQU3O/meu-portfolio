@@ -219,7 +219,13 @@
     </footer>
 
     <!-- EmailJS para envio de emails -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/index.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init('-9nJq48xIc1sepwI2');
+            console.log('EmailJS inicializado inline');
+        })();
+    </script>
     
     <script src="js/script.js"></script>
     <!-- Debug temporário para iPhone XR -->
