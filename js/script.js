@@ -271,11 +271,23 @@ document.querySelector('nav .nav-github-btn').addEventListener('click', () => {
     window.open('https://github.com/ZAQU3O', '_blank'); // Substitua pelo seu GitHub
 });
 
+// Inicializar EmailJS
+const EMAILJS_PUBLIC_KEY = '-9nJq48xIc1sepwI2';
+const EMAILJS_SERVICE_ID = 'service_zfft89v';
+const EMAILJS_TEMPLATE_ID = 'template_rclgdrf';
+
+// Inicializar EmailJS quando o documento carregar
+document.addEventListener('DOMContentLoaded', () => {
+    if (typeof emailjs !== 'undefined') {
+        emailjs.init(EMAILJS_PUBLIC_KEY);
+    }
+});
+
 // Funcionalidade do formulário de contato
 document.getElementById('contactForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     
-    const formData = new FormData(e.target);
+    const form = e.target;
     const formStatus = document.getElementById('form-status');
     const submitBtn = document.querySelector('.submit-btn');
     
@@ -284,26 +296,45 @@ document.getElementById('contactForm').addEventListener('submit', async (e) => {
     submitBtn.disabled = true;
     
     try {
-        // Simular envio (substitua por sua implementação real)
-        await new Promise(resolve => setTimeout(resolve, 2000));
+        // Preparar dados do formulário
+        const templateParams = {
+            to_email: 'bartworld14@gmail.com',
+            from_name: document.getElementById('name').value,
+            from_email: document.getElementById('email').value,
+            subject: document.getElementById('subject').value,
+            budget: document.getElementById('budget').value || 'Não especificado',
+            message: document.getElementById('message').value
+        };
         
-        // Sucesso
-        formStatus.className = 'form-status success';
-        formStatus.textContent = 'Mensagem enviada com sucesso! Entrarei em contato em breve.';
-        formStatus.style.display = 'block';
+        // Enviar email via EmailJS
+        const response = await emailjs.send(
+            EMAILJS_SERVICE_ID,
+            EMAILJS_TEMPLATE_ID,
+            templateParams
+        );
         
-        // Resetar formulário
-        e.target.reset();
-        
-        // Ocultar status após 5 segundos
-        setTimeout(() => {
-            formStatus.style.display = 'none';
-        }, 5000);
+        if (response.status === 200) {
+            // Sucesso
+            formStatus.className = 'form-status success';
+            formStatus.textContent = 'Mensagem enviada com sucesso! Entrarei em contato em breve.';
+            formStatus.style.display = 'block';
+            
+            // Resetar formulário
+            form.reset();
+            
+            // Ocultar status após 5 segundos
+            setTimeout(() => {
+                formStatus.style.display = 'none';
+            }, 5000);
+        } else {
+            throw new Error('Erro ao enviar email');
+        }
         
     } catch (error) {
+        console.error('Erro:', error);
         // Erro
         formStatus.className = 'form-status error';
-        formStatus.textContent = 'Erro ao enviar mensagem. Tente novamente ou entre em contato diretamente.';
+        formStatus.textContent = 'Erro ao enviar mensagem. Verifique sua conexão e tente novamente.';
         formStatus.style.display = 'block';
     } finally {
         // Restaurar botão
