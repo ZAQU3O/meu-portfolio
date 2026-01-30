@@ -299,8 +299,8 @@ document.getElementById('contactForm').addEventListener('submit', async (e) => {
         // Preparar dados do formulário
         const templateParams = {
             to_email: 'bartworld14@gmail.com',
-            from_name: document.getElementById('name').value,
-            from_email: document.getElementById('email').value,
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
             subject: document.getElementById('subject').value,
             budget: document.getElementById('budget').value || 'Não especificado',
             message: document.getElementById('message').value
@@ -312,6 +312,8 @@ document.getElementById('contactForm').addEventListener('submit', async (e) => {
             EMAILJS_TEMPLATE_ID,
             templateParams
         );
+        
+        console.log('Email enviado com sucesso:', response);
         
         if (response.status === 200) {
             // Sucesso
@@ -331,7 +333,7 @@ document.getElementById('contactForm').addEventListener('submit', async (e) => {
         }
         
     } catch (error) {
-        console.error('Erro:', error);
+        console.error('Erro ao enviar email:', error);
         // Erro
         formStatus.className = 'form-status error';
         formStatus.textContent = 'Erro ao enviar mensagem. Verifique sua conexão e tente novamente.';
