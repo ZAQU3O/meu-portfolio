@@ -291,6 +291,15 @@ document.getElementById('contactForm').addEventListener('submit', async (e) => {
     const formStatus = document.getElementById('form-status');
     const submitBtn = document.querySelector('.submit-btn');
     
+    // Verificar se o EmailJS está carregado
+    if (typeof emailjs === 'undefined') {
+        formStatus.className = 'form-status error';
+        formStatus.textContent = 'Erro: EmailJS não carregado. Verifique sua conexão com a internet.';
+        formStatus.style.display = 'block';
+        console.error('EmailJS não está carregado');
+        return;
+    }
+    
     // Mostrar loading
     submitBtn.innerHTML = '<span>Enviando...</span><i class="ri-loader-4-line"></i>';
     submitBtn.disabled = true;
@@ -298,13 +307,14 @@ document.getElementById('contactForm').addEventListener('submit', async (e) => {
     try {
         // Preparar dados do formulário
         const templateParams = {
-            to_email: 'bartworld14@gmail.com',
             name: document.getElementById('name').value,
             email: document.getElementById('email').value,
             subject: document.getElementById('subject').value,
             budget: document.getElementById('budget').value || 'Não especificado',
             message: document.getElementById('message').value
         };
+        
+        console.log('Enviando email com os dados:', templateParams);
         
         // Enviar email via EmailJS
         const response = await emailjs.send(
@@ -334,9 +344,11 @@ document.getElementById('contactForm').addEventListener('submit', async (e) => {
         
     } catch (error) {
         console.error('Erro ao enviar email:', error);
+        console.error('Detalhes do erro:', error.text || error.message);
+        
         // Erro
         formStatus.className = 'form-status error';
-        formStatus.textContent = 'Erro ao enviar mensagem. Verifique sua conexão e tente novamente.';
+        formStatus.textContent = `Erro: ${error.text || error.message || 'Verifique sua conexão e tente novamente.'}`;
         formStatus.style.display = 'block';
     } finally {
         // Restaurar botão
