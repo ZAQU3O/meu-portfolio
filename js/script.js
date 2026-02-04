@@ -249,7 +249,7 @@ document.querySelectorAll('.icons i').forEach(icon => {
         } else if (iconClass.includes('instagram')) {
             url = 'https://instagram.com/zaqueeo'; 
         } else if (iconClass.includes('discord')) {
-            url = 'https://discord.gg/762116739268870166'; 
+            url = 'https://discord.com/users/762116739268870166'; 
         }
         
         if (url) {
