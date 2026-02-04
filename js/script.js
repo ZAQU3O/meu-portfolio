@@ -245,11 +245,11 @@ document.querySelectorAll('.icons i').forEach(icon => {
         let url = '';
         
         if (iconClass.includes('whatsapp')) {
-            url = 'https://wa.me/5511999999999'; // Substitua pelo seu número
+            url = 'https://wa.me/5589994111573'; 
         } else if (iconClass.includes('instagram')) {
-            url = 'https://instagram.com/seu_usuario'; // Substitua pelo seu usuário
+            url = 'https://instagram.com/zaqueeo'; 
         } else if (iconClass.includes('discord')) {
-            url = 'https://discord.gg/seu_servidor'; // Substitua pelo seu servidor
+            url = 'https://discord.gg/762116739268870166'; 
         }
         
         if (url) {
