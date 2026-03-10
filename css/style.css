@@ -115,7 +115,7 @@ body:not(.menu-open) .nav-overlay {
 }
 
 nav {
-    width: min(100%, 1240px);
+    width: min(calc(100% - 32px), 1208px);
     display: flex;
     align-items: center;
     justify-content: space-between;
