@@ -285,7 +285,7 @@ nav .nav-github-btn i {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background: #f5f5f5;
+    background: linear-gradient(180deg, #ffffff 0%, #f1f1f1 100%);
     padding: 50px;
 }
 
