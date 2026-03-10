@@ -311,6 +311,8 @@ nav .nav-github-btn i {
     border-radius: 16px;
     border: 1px solid #e8e8e8;
     min-height: 365px;
+    display: flex;
+    flex-direction: column;
 }
 
 .about .items .item .inner img {
@@ -328,11 +330,13 @@ nav .nav-github-btn i {
     color: #000;
     margin-bottom: 10px;
     display: block;
+    min-height: 52px;
 }
 
 .about .items .item .inner p {
     color: #606060;
     font-size: 15px;
+    margin-top: auto;
     
 }
 
