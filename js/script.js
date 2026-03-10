@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Inicializar menu mobile
     initMobileMenu();
     
-    const elementsToAnimate = document.querySelectorAll('.about .item, .projects .item, .hero .left-section, .hero img');
+    const elementsToAnimate = document.querySelectorAll('.about .item, .projects .item, .hero .left-section, .hero img, .metrics .metric-card, .testimonials .testimonial-card');
     for (const el of elementsToAnimate) {
         observer.observe(el);
     }

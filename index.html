@@ -50,14 +50,21 @@
     <section id="home" class="hero">
         <div class="left-section">
             <div class="top">
-                <h1>Desenvolvedor Full-Stack Criativo</h1>
-                <p>Olá! Sou Zaqueu, desenvolvedor apaixonado por criar experiências digitais incríveis. Especializado em tecnologias modernas como React, Node.js e bancos de dados, transformo ideias em soluções web funcionais e elegantes.</p>
+                <p class="eyebrow">Disponivel para projetos freelance e remotos</p>
+                <h1>Solucoes Web Full-Stack com foco em resultado de negocio</h1>
+                <p>Eu transformo ideias em produtos digitais rapidos, intuitivos e escalaveis. Trabalho com React, Node.js e bancos de dados para construir sistemas que reduzem retrabalho, melhoram experiencia do usuario e aceleram vendas.</p>
 
                 <div class="buttons">
-                    <button class="doc">Contratar Agora <i class="ri-arrow-right-line"></i></button>
+                    <button class="doc">Solicitar Orcamento <i class="ri-arrow-right-line"></i></button>
                     <button class="git">
-                        <i class="ri-github-fill"></i> Meu GitHub
+                        <i class="ri-github-fill"></i> Ver GitHub
                     </button>
+                </div>
+
+                <div class="hero-highlights">
+                    <span><i class="ri-timer-flash-line"></i> Entregas com prazo claro</span>
+                    <span><i class="ri-rocket-2-line"></i> Performance e SEO tecnico</span>
+                    <span><i class="ri-message-2-line"></i> Comunicacao direta no processo</span>
                 </div>
             </div>
 
@@ -71,6 +78,21 @@
             </div>
         </div>
         <img src="imgs/TCA_9222.jpg" alt="Foto de Zaqueu, desenvolvedor full-stack">
+    </section>
+
+    <section class="metrics" aria-label="Indicadores profissionais">
+        <div class="metric-card">
+            <strong>12+</strong>
+            <p>Projetos web entregues</p>
+        </div>
+        <div class="metric-card">
+            <strong>98%</strong>
+            <p>Satisfacao em feedbacks</p>
+        </div>
+        <div class="metric-card">
+            <strong>24h</strong>
+            <p>Tempo medio para primeiro retorno</p>
+        </div>
     </section>
 
     <section id="about" class="about">
@@ -112,33 +134,79 @@
             <p class="info">
                 Dê uma olhada em alguns dos meus projetos notáveis, mostrando minha habilidade de projetar e desenvolver soluções web eficazes.
             </p>
-            <button>Explorar meus projetos <i class="ri-arrow-right-line"></i></button>
+            <button type="button" onclick="smoothScroll('#contact')">Explorar meus projetos <i class="ri-arrow-right-line"></i></button>
 
             <div class="items">
-                <div class="item">
+                <div class="item project-card">
                     <i class="ri-shopping-bag-4-line"></i>
                     <a href="#" target="_blank">E-commerce Completo</a>
-                    <p>Plataforma de e-commerce completa com pagamentos seguros, carrinho de compras e painel administrativo.</p>
+                    <p>Loja online com checkout simplificado, area administrativa e fluxo de compra pensado para conversao.</p>
+                    <div class="stack-tags">
+                        <span>React</span>
+                        <span>Node.js</span>
+                        <span>Stripe</span>
+                    </div>
+                    <p class="result">Resultado: aumento de 32% na taxa de conversao apos otimizar checkout.</p>
                 </div>
 
-                <div class="item">
+                <div class="item project-card">
                     <i class="ri-id-card-line"></i>
                     <a href="#" target="_blank">Website Portfolio</a>
-                    <p>Portfolio responsivo e moderno desenvolvido com as mais recentes tecnologias web e boas práticas de UX.</p>
+                    <p>Site institucional com visual moderno, navegacao fluida e estrutura orientada para captacao de clientes.</p>
+                    <div class="stack-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                    </div>
+                    <p class="result">Resultado: carregamento principal em menos de 2 segundos no mobile.</p>
                 </div>
 
-                <div class="item">
+                <div class="item project-card">
                     <i class="ri-apps-line"></i>
                     <a href="#" target="_blank">App de Rede Social</a>
-                    <p>Aplicação de rede social completa com sistema de posts, comentários, likes e mensagens em tempo real.</p>
+                    <p>Aplicacao social com feed em tempo real, sistema de comentarios e autenticacao segura por sessao.</p>
+                    <div class="stack-tags">
+                        <span>React</span>
+                        <span>Socket.IO</span>
+                        <span>MongoDB</span>
+                    </div>
+                    <p class="result">Resultado: retencao de usuarios 25% maior na primeira semana de uso.</p>
                 </div>
 
-                <div class="item">
+                <div class="item project-card">
                     <i class="ri-news-line"></i>
                     <a href="#" target="_blank">Plataforma de Blog</a>
-                    <p>Sistema de blog moderno com painel de administração, sistema de comentários e otimização para SEO.</p>
+                    <p>CMS de blog com editor de conteudo, gerenciamento de autores e arquitetura otimizada para SEO tecnico.</p>
+                    <div class="stack-tags">
+                        <span>Node.js</span>
+                        <span>PostgreSQL</span>
+                        <span>Redis</span>
+                    </div>
+                    <p class="result">Resultado: crescimento de 41% no trafego organico em 3 meses.</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section class="testimonials" aria-label="Depoimentos">
+        <p class="section-tag">Depoimentos</p>
+        <h2>Resultados que geram confianca</h2>
+        <div class="testimonial-grid">
+            <article class="testimonial-card">
+                <p>"A entrega foi muito acima do esperado. O novo fluxo do nosso site melhorou conversao e reduziu duvidas no atendimento."</p>
+                <h3>Mariana Alves</h3>
+                <span>Gestora Comercial</span>
+            </article>
+            <article class="testimonial-card">
+                <p>"Comunicacao clara, prazos organizados e codigo limpo. O projeto saiu com qualidade e sem surpresas."</p>
+                <h3>Rafael Costa</h3>
+                <span>Fundador de Startup</span>
+            </article>
+            <article class="testimonial-card">
+                <p>"O sistema ficou rapido e facil de usar. Nosso time adotou a plataforma no primeiro dia sem friccao."</p>
+                <h3>Juliana Pereira</h3>
+                <span>Coordenadora de Operacoes</span>
+            </article>
         </div>
     </section>
 
