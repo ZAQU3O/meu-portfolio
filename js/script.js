@@ -274,6 +274,7 @@ document.querySelector('nav .nav-github-btn').addEventListener('click', () => {
 // Configuração EmailJS
 const EMAILJS_SERVICE_ID = 'service_zfft89v';
 const EMAILJS_TEMPLATE_ID = 'template_rclgdrf';
+const EMAILJS_AUTOREPLY_TEMPLATE_ID = 'template_q98lxkg';
 
 // Funcionalidade do formulário de contato
 document.getElementById('contactForm').addEventListener('submit', async (e) => {
@@ -308,7 +309,7 @@ document.getElementById('contactForm').addEventListener('submit', async (e) => {
         
         console.log('Enviando email com os dados:', templateParams);
         
-        // Enviar email via EmailJS
+        // Enviar email principal (notificação para você)
         const response = await emailjs.send(
             EMAILJS_SERVICE_ID,
             EMAILJS_TEMPLATE_ID,
@@ -318,6 +319,17 @@ document.getElementById('contactForm').addEventListener('submit', async (e) => {
         console.log('Email enviado com sucesso:', response);
         
         if (response.status === 200) {
+            // Enviar auto-resposta para o cliente (não bloqueia sucesso principal)
+            try {
+                await emailjs.send(
+                    EMAILJS_SERVICE_ID,
+                    EMAILJS_AUTOREPLY_TEMPLATE_ID,
+                    templateParams
+                );
+            } catch (autoReplyError) {
+                console.warn('Auto-resposta não enviada:', autoReplyError);
+            }
+
             // Sucesso
             formStatus.className = 'form-status success';
             formStatus.textContent = 'Mensagem enviada com sucesso! Entrarei em contato em breve.';
