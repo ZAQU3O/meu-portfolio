@@ -52,6 +52,43 @@ O formulário pode ser integrado com:
 - **Formspree**
 - **Backend próprio** (Node.js, Express)
 
+### Configuração Final do EmailJS (Validada)
+
+No JavaScript, o projeto usa dois templates:
+
+```javascript
+const EMAILJS_SERVICE_ID = 'service_zfft89v';
+const EMAILJS_TEMPLATE_ID = 'template_rclgdrf';          // notificacao para voce
+const EMAILJS_AUTOREPLY_TEMPLATE_ID = 'template_q98lxkg'; // resposta automatica para cliente
+```
+
+Variáveis enviadas no formulário:
+
+```javascript
+{
+    name,
+    email,
+    to_email,
+    subject,
+    budget,
+    message
+}
+```
+
+No template de auto-resposta do EmailJS:
+- **To Name**: `{{name}}`
+- **To Email**: `{{email}}` (ou `{{to_email}}`)
+
+Isso garante que a auto-resposta seja enviada para o cliente, e não para seu próprio email.
+
+### Proteção Anti-Spam Simples (Já Aplicada)
+
+O formulário possui duas proteções leves:
+- **Honeypot**: campo oculto (`company`) para bloquear bots.
+- **Tempo mínimo de envio**: bloqueia envios feitos em menos de 4 segundos após abrir a página.
+
+Essas medidas reduzem spam sem prejudicar a experiência de usuários reais.
+
 ## 📁 Estrutura do Projeto
 
 ```
@@ -89,6 +126,8 @@ meu-portfolio/
 - Responsividade aprimorada
 - Navegação funcional
 - Formulário de contato completo
+- Envio com dois templates EmailJS (notificação + auto-resposta)
+- Proteção anti-spam (honeypot + tempo mínimo)
 - Meta tags para SEO
 - Cards de projetos reais online
 - Métricas e depoimentos

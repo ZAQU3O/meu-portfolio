@@ -275,6 +275,12 @@ document.querySelector('nav .nav-github-btn').addEventListener('click', () => {
 const EMAILJS_SERVICE_ID = 'service_zfft89v';
 const EMAILJS_TEMPLATE_ID = 'template_rclgdrf';
 const EMAILJS_AUTOREPLY_TEMPLATE_ID = 'template_q98lxkg';
+const FORM_MIN_SUBMIT_TIME_MS = 4000;
+let contactFormLoadedAt = Date.now();
+
+document.addEventListener('DOMContentLoaded', () => {
+    contactFormLoadedAt = Date.now();
+});
 
 // Funcionalidade do formulário de contato
 document.getElementById('contactForm').addEventListener('submit', async (e) => {
@@ -283,6 +289,22 @@ document.getElementById('contactForm').addEventListener('submit', async (e) => {
     const form = e.target;
     const formStatus = document.getElementById('form-status');
     const submitBtn = document.querySelector('.submit-btn');
+    const honeypotField = document.getElementById('company');
+    const elapsedSinceLoad = Date.now() - contactFormLoadedAt;
+
+    // Anti-spam: bots costumam preencher campos ocultos.
+    if (honeypotField && honeypotField.value.trim() !== '') {
+        console.warn('Envio bloqueado por honeypot anti-spam.');
+        return;
+    }
+
+    // Anti-spam: bloqueia envios rapidos demais apos abrir a pagina.
+    if (elapsedSinceLoad < FORM_MIN_SUBMIT_TIME_MS) {
+        formStatus.className = 'form-status error';
+        formStatus.textContent = 'Aguarde alguns segundos e tente novamente.';
+        formStatus.style.display = 'block';
+        return;
+    }
     
     // Verificar se o EmailJS está carregado
     if (typeof emailjs === 'undefined') {
@@ -302,6 +324,7 @@ document.getElementById('contactForm').addEventListener('submit', async (e) => {
         const templateParams = {
             name: document.getElementById('name').value,
             email: document.getElementById('email').value,
+            to_email: document.getElementById('email').value,
             subject: document.getElementById('subject').value,
             budget: document.getElementById('budget').value || 'Não especificado',
             message: document.getElementById('message').value
