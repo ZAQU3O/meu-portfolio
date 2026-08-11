@@ -56,17 +56,10 @@ function setupMenuEventListeners() {
     // Redimensionamento da janela
     window.addEventListener('resize', () => {
         const width = window.innerWidth;
-        console.log('Largura atual:', width);
         
         // Fechar menu se mudou para desktop
         if (width > 768 && isMenuOpen) {
-            console.log('Fechando menu - mudou para desktop');
             closeMenu();
-        }
-        
-        // Debug para iPhone XR
-        if (width <= 414) {
-            console.log('Dispositivo detectado: iPhone XR ou similar');
         }
     });
 }
@@ -146,27 +139,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     });
 });
 
-// Destacar link ativo na navegação
-window.addEventListener('scroll', () => {
-    const sections = document.querySelectorAll('section, .hero, .about, .projects, .contact');
-    const navLinks = document.querySelectorAll('.nav-links a');
-    
-    let current = '';
-    
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop - 100;
-        if (scrollY >= sectionTop) {
-            current = section.getAttribute('id') || section.className.split(' ')[0];
-        }
-    });
-    
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
-        }
-    });
-});
+// Destacar link ativo na navegação (gerenciado via debounce no DOMContentLoaded)
 
 // Animações de entrada
 const observerOptions = {
@@ -278,6 +251,11 @@ const EMAILJS_AUTOREPLY_TEMPLATE_ID = 'template_q98lxkg';
 const FORM_MIN_SUBMIT_TIME_MS = 4000;
 let contactFormLoadedAt = Date.now();
 
+// Inicializar EmailJS
+if (typeof emailjs !== 'undefined') {
+    emailjs.init('-9nJq48xIc1sepwI2');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     contactFormLoadedAt = Date.now();
 });
@@ -294,7 +272,6 @@ document.getElementById('contactForm').addEventListener('submit', async (e) => {
 
     // Anti-spam: bots costumam preencher campos ocultos.
     if (honeypotField && honeypotField.value.trim() !== '') {
-        console.warn('Envio bloqueado por honeypot anti-spam.');
         return;
     }
 
@@ -311,7 +288,6 @@ document.getElementById('contactForm').addEventListener('submit', async (e) => {
         formStatus.className = 'form-status error';
         formStatus.textContent = 'Erro: EmailJS não carregado. Verifique sua conexão com a internet.';
         formStatus.style.display = 'block';
-        console.error('EmailJS não está carregado');
         return;
     }
     
@@ -330,16 +306,12 @@ document.getElementById('contactForm').addEventListener('submit', async (e) => {
             message: document.getElementById('message').value
         };
         
-        console.log('Enviando email com os dados:', templateParams);
-        
         // Enviar email principal (notificação para você)
         const response = await emailjs.send(
             EMAILJS_SERVICE_ID,
             EMAILJS_TEMPLATE_ID,
             templateParams
         );
-        
-        console.log('Email enviado com sucesso:', response);
         
         if (response.status === 200) {
             // Enviar auto-resposta para o cliente (não bloqueia sucesso principal)
@@ -370,9 +342,6 @@ document.getElementById('contactForm').addEventListener('submit', async (e) => {
         }
         
     } catch (error) {
-        console.error('Erro ao enviar email:', error);
-        console.error('Detalhes do erro:', error.text || error.message);
-        
         // Erro
         formStatus.className = 'form-status error';
         formStatus.textContent = `Erro: ${error.text || error.message || 'Verifique sua conexão e tente novamente.'}`;

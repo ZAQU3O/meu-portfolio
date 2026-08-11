@@ -7,20 +7,21 @@
     <meta name="description" content="Portfólio de Zaqueu, desenvolvedor full-stack especializado em React, Node.js e tecnologias modernas. Veja meus projetos e entre em contato.">
     <meta name="keywords" content="desenvolvedor, full-stack, react, nodejs, javascript, portfolio, web developer">
     <meta name="author" content="Zaqueu">
+    <link rel="icon" type="image/png" href="imgs/zaqueo logo.png">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://seu-dominio.com/">
+    <meta property="og:url" content="https://zaqu3o.github.io/meu-portfolio/">
     <meta property="og:title" content="Zaqueu - Desenvolvedor Full-Stack">
     <meta property="og:description" content="Desenvolvedor full-stack especializado em criar soluções web modernas e eficientes.">
-    <meta property="og:image" content="https://seu-dominio.com/imgs/TCA_9222.jpg">
+    <meta property="og:image" content="https://zaqu3o.github.io/meu-portfolio/imgs/TCA_9222.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://seu-dominio.com/">
+    <meta property="twitter:url" content="https://zaqu3o.github.io/meu-portfolio/">
     <meta property="twitter:title" content="Zaqueu - Desenvolvedor Full-Stack">
     <meta property="twitter:description" content="Desenvolvedor full-stack especializado em criar soluções web modernas e eficientes.">
-    <meta property="twitter:image" content="https://seu-dominio.com/imgs/TCA_9222.jpg">
+    <meta property="twitter:image" content="https://zaqu3o.github.io/meu-portfolio/imgs/TCA_9222.jpg">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.5.0/remixicon.min.css">
     <link rel="stylesheet" href="css/style.css">
@@ -34,7 +35,7 @@
         <div class="nav-links">
             <a href="#home">Home</a>
             <a href="#about">Sobre</a>
-            <a href="#about">Serviços</a>
+            <a href="#skills">Serviços</a>
             <a href="#projects">Portfólio</a>
             <a href="#contact">Contato</a>
         </div>
@@ -101,7 +102,7 @@
         <div class="items">
             <div class="item">
                 <div class="inner">
-                    <img src="imgs/site exemplo.jpeg" alt="Exemplo de desenvolvimento front-end">
+                    <img src="imgs/site exemplo.jpeg" alt="Exemplo de desenvolvimento front-end" loading="lazy" width="400" height="180">
                     <a href="#about">Desenvolvimento Front-End</a>
                     <p>Criando interfaces visualmente atraentes e responsivas usando HTML, CSS e frameworks JavaScript como React e Vue.</p>
                 </div>
@@ -109,7 +110,7 @@
 
             <div class="item">
                 <div class="inner">
-                    <img src="imgs/back end.jpeg" alt="Exemplo de desenvolvimento back-end">
+                    <img src="imgs/back end.jpeg" alt="Exemplo de desenvolvimento back-end" loading="lazy" width="400" height="180">
                     <a href="#about">Desenvolvimento Back-End</a>
                     <p>Construindo aplicações server-side robustas e escaláveis com Node.js, Express e bancos de dados como MongoDB e SQL.</p>
                 </div>
@@ -117,10 +118,57 @@
 
             <div class="item">
                 <div class="inner">
-                    <img src="imgs/database dev.jpeg" alt="Exemplo de integracao full-stack">
+                    <img src="imgs/database dev.jpeg" alt="Exemplo de integracao full-stack" loading="lazy" width="400" height="180">
                     <a href="#about">Integração Full-Stack</a>
                     <p>Integrando perfeitamente tecnologias front-end e back-end para entregar soluções web completas.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <p class="section-tag"><i class="ri-code-s-slash-line"></i> Stack Tecnológico</p>
+        <h2>Ferramentas que uso no dia a dia</h2>
+        <div class="skills-grid">
+            <div class="skill-item">
+                <div class="skill-icon"><i class="ri-reactjs-line"></i></div>
+                <span>React</span>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon"><i class="ri-terminal-box-line"></i></div>
+                <span>Next.js</span>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon"><i class="ri-nodejs-line"></i></div>
+                <span>Node.js</span>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon"><i class="ri-javascript-line"></i></div>
+                <span>TypeScript</span>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon"><i class="ri-javascript-line"></i></div>
+                <span>JavaScript</span>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon"><i class="ri-database-2-line"></i></div>
+                <span>MongoDB</span>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon"><i class="ri-database-line"></i></div>
+                <span>PostgreSQL</span>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon"><i class="ri-html5-line"></i></div>
+                <span>HTML5 / CSS3</span>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon"><i class="ri-github-fill"></i></div>
+                <span>Git &amp; GitHub</span>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon"><i class="ri-layout-line"></i></div>
+                <span>REST APIs</span>
             </div>
         </div>
     </section>
@@ -169,16 +217,19 @@
         <h2>Resultados que geram confianca</h2>
         <div class="testimonial-grid">
             <article class="testimonial-card">
+                <div class="stars">★★★★★</div>
                 <p>"A entrega foi muito acima do esperado. O novo fluxo do nosso site melhorou conversao e reduziu duvidas no atendimento."</p>
                 <h3>Mariana Alves</h3>
                 <span>Gestora Comercial</span>
             </article>
             <article class="testimonial-card">
+                <div class="stars">★★★★★</div>
                 <p>"Comunicacao clara, prazos organizados e codigo limpo. O projeto saiu com qualidade e sem surpresas."</p>
                 <h3>Rafael Costa</h3>
                 <span>Fundador de Startup</span>
             </article>
             <article class="testimonial-card">
+                <div class="stars">★★★★★</div>
                 <p>"O sistema ficou rapido e facil de usar. Nosso time adotou a plataforma no primeiro dia sem friccao."</p>
                 <h3>Juliana Pereira</h3>
                 <span>Coordenadora de Operacoes</span>
@@ -192,12 +243,12 @@
             <div class="contact-info">
                 <div class="items">
                     <div class="item">
-                        <a href="">Agendar uma Conversa</a>
+                        <a href="#contact-form">Agendar uma Conversa</a>
                         <p>Vamos discutir suas ideias de projeto e como posso ajudá-lo.</p>
                         <button type="button" onclick="smoothScroll('#contact-form')">Agendar Conversa</button>
                     </div>
                     <div class="item">
-                        <a href="">Explorar meu Trabalho</a>
+                        <a href="#projects">Explorar meu Trabalho</a>
                         <p>Veja meu portfólio para conhecer o tipo de trabalho que faço.</p>
                         <button type="button" onclick="smoothScroll('#projects')">Ver meu Trabalho</button>
                     </div>
@@ -262,18 +313,13 @@
     </section>
 
     <footer>
-        <a href="">Termos de Serviço</a>
-        <a href="">Política de Privacidade</a>
-        <a href="">© 2025 Zaqueu - Desenvolvedor de Software</a>
+        <a href="#home">Termos de Serviço</a>
+        <a href="#home">Política de Privacidade</a>
+        <a href="#home">© 2026 Zaqueu - Desenvolvedor de Software</a>
     </footer>
 
     <!-- EmailJS para envio de emails -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function(){
-            emailjs.init('-9nJq48xIc1sepwI2');
-        })();
-    </script>
     
     <script src="js/script.js"></script>
 </body>
